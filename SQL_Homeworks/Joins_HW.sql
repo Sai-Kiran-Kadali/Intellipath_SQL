@@ -9,7 +9,7 @@ Left Join Person.Address as PA on PP.BusinessEntityID=PA.AddressID
 
 --3. Right Join:
 --	 Question: Write a query to list all product reviews along with the names of the reviewers.
---	 Include all reviews even if the reviewer s name is not available. 
+--	 Include all reviews even if the reviewers name is not available. 
 --	Use the `Production.ProductReview` table and the `Person.Person` table, joining on 	`ReviewerID`.
 
 Select PP.FirstName, PP.LastName, PA.AddressLine1

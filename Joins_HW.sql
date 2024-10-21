@@ -1,8 +1,20 @@
+--Practice Question for AdventureWorks2022 database 
+
+--1. Inner Join:
+	 Question: Write a query to retrieve the `BusinessEntityID`, `JobTitle`, `FirstName`, and `LastName` of 
+	all employees by joining the `HumanResources.Employee` and `Person.Person` tables on `BusinessEntityID`.
+     
+Use AdventureWorks2022
+     
+	select He.BusinessEntityID,JobTitle,FirstName,lastname
+	from humanResources.Employee HE Inner Join Person.Person  PP on He.BusinessEntityID=PP.BusinessEntityID
+
+
+     
 --2. Left Join:
 --Question: Write a query to list all persons with their addresses, including those who do not have an 
 --address. Use the `Person.Person` table and the `Person.Address` table, joining on `BusinessEntityID`.
-
-Use AdventureWorks2022
+  
 Select PP.FirstName, PP.LastName, PA.AddressLine1
 from Person.Person as PP
 Left Join Person.Address as PA on PP.BusinessEntityID=PA.AddressID
@@ -11,10 +23,9 @@ Left Join Person.Address as PA on PP.BusinessEntityID=PA.AddressID
 --	 Question: Write a query to list all product reviews along with the names of the reviewers.
 --	 Include all reviews even if the reviewer s name is not available. 
 --	Use the `Production.ProductReview` table and the `Person.Person` table, joining on 	`ReviewerID`.
-
-Select PP.FirstName, PP.LastName, PA.AddressLine1
-from Person.Person as PP
-Left Join Person.Address as PA on PP.BusinessEntityID=PA.AddressID
+  
+select PR.ReviewerName, PR.Rating from Production.ProductReview as PR
+right join Person.person as PP on PR.ProductReviewID=PP.BusinessEntityID
 
 --4. Full Outer Join:
 --	Question: Write a query to list all employees and their associated departments. 
